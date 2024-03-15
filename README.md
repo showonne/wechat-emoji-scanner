@@ -1,5 +1,19 @@
 # Wechat Emoji Scanner
 
+## Commands
+#### install dependencies
+```bash
+yarn install
+```
+#### dev
+```bash
+yarn start
+```
+#### build
+```bash
+yarn package
+```
+
 ## SnapShot:
 <img style="width: 400px" src="./snapshot.png" />
 
