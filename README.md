@@ -1,4 +1,4 @@
 # Wechat Emoji Scanner
 
 ## SnapShot:
-<img src="./snapshot.png" />
+<img style="width: 400px" src="./snapshot.png" />
