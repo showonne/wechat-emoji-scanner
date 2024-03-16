@@ -20,6 +20,7 @@ export function Index() {
   const handleMainThreadMessage = useMemoizedFn(async (payload) => {
     switch (payload.event) {
       case 'new-item': {
+        console.warn('new-item', payload.item)
         setImages((prev) => Array.from(new Set([...prev, payload.item])));
         break;
       }
@@ -35,10 +36,6 @@ export function Index() {
   useEffect(() => {
     ipcRenderer.on('main-events', handleMainThreadMessage);
   }, []);
-
-  useEffect(() => {
-    console.log(images.length);
-  }, [images]);
 
   const copyImage = useMemoizedFn(async (image) => {
     try {
@@ -108,13 +105,11 @@ export function Index() {
             <div className="group-hover:flex w-full h-full absolute z-10 bg-black/[.4] hidden justify-center items-center gap-4">
               <CopyOutlined
                 onClick={() => handleImageAction(image, 'copy')}
-                style={{ fontSize: 20, color: 'white' }}
-                className="cursor-pointer"
+                className="cursor-pointer text-white text=[20px]"
               />
               <CloudDownloadOutlined
                 onClick={() => handleImageAction(image, 'download')}
-                style={{ fontSize: 20, color: 'white' }}
-                className="cursor-pointer"
+                className="cursor-pointer text-white text=[20px]"
               />
             </div>
             <Image
@@ -126,7 +121,7 @@ export function Index() {
           </div>
         ))}
       </div>
-      <FloatButton.BackTop visibilityHeight={200} target={() => document.querySelector('#content-router-view')}/>
+      <FloatButton.BackTop visibilityHeight={200} target={() => document.querySelector('#content-router-view') as HTMLElement}/>
     </div>
   );
 }
